@@ -1,0 +1,30 @@
+# Privilege Escalation in Kali Linux (For Educational Use Only)
+##  What Is Privilege Escalation?
+
+Privilege escalation is the process of gaining higher access or control on a system than initially authorized. It usually involves moving from a **low-privileged user to root/admin level access**.
+
+---
+
+##  Types of Privilege Escalation
+
+- **Vertical Escalation:**  
+  Gain access from a standard user to a privileged user (e.g., root).
+
+- **Horizontal Escalation:**  
+  Access data or functions of other users at the same privilege level.
+
+---
+
+## 🧪 Initial Enumeration
+
+These commands help gather system information and find misconfigurations:
+
+```bash
+whoami                  # Current username
+id                      # User/group IDs
+hostname                # Host information
+uname -a                # Kernel version
+cat /etc/os-release     # OS info
+sudo -l                 # List allowed sudo commands
+env                     # Environment variables
+ps aux                  # Running processes
