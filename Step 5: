@@ -1,0 +1,6 @@
+ Automated Enumeration Tools
+
+# LinPEAS (recommended)
+wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
+chmod +x linpeas.sh
+./linpeas.sh
