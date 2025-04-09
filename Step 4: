@@ -1,0 +1,5 @@
+ Process, Services, and Cron Enumeration
+
+ps aux
+cat /etc/crontab
+ls -la /etc/cron.*/*
