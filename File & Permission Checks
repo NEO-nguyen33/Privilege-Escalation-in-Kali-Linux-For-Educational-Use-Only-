@@ -1,0 +1,9 @@
+find / -perm -4000 -type f 2>/dev/null
+# Find all SUID binaries (possible abuse)
+
+ls -la /etc/passwd
+ls -la /etc/shadow
+# Check if sensitive files are writable
+
+find / -type f -name "*.bak" 2>/dev/null
+# Look for backup files (might contain passwords)
