@@ -1,0 +1,79 @@
+---
+Password Cracking
+
+> 🛑 **WARNING:**  
+> Password cracking must be performed **only in authorized environments** (labs, CTFs, or legal pentests).  
+> Unauthorized use is **illegal**.
+
+---
+
+### 🎯 Why Crack Passwords?
+
+- Found hashed passwords in:
+  - `/etc/shadow`
+  - Database/config files (e.g. MySQL, .env, backup)
+  - User credentials in plaintext (e.g. web shells)
+- Cracking them can help:
+  - Switch users with `su <user>`
+  - Run `sudo` if the user has privileges
+  - Reuse credentials across services
+
+---
+
+### 🧰 Tools Needed
+
+| Tool        | Use                         |
+|-------------|-----------------------------|
+| `john`      | Crack Unix hashes           |
+| `hashcat`   | GPU-accelerated cracking    |
+| `unshadow`  | Merge `/etc/shadow` & `passwd` for John |
+
+---
+
+### 🔓 John The Ripper – Basic Usage
+
+1️⃣ Combine shadow & passwd (if cracking Linux user hash):
+
+```bash
+unshadow /etc/passwd /etc/shadow > merged.txt
+2️⃣ Crack using a wordlist:
+
+john --wordlist=/usr/share/wordlists/rockyou.txt merged.txt
+3️⃣ View cracked results:
+
+john --show merged.txt
+⚡ Hashcat – Faster Cracking (Optional)
+1️⃣ Save raw hash (from /etc/shadow, config, etc.) to hash.txt
+
+2️⃣ Crack with appropriate mode (e.g., SHA-512 = -m 1800):
+
+hashcat -m 1800 hash.txt rockyou.txt --force
+🧠 Find correct hash mode: Hashcat Wiki
+
+💡 Tips & Tricks
+Cracked password? Try:
+
+su <user>
+sudo -l
+Test cracked creds on:
+
+Other users
+
+Services: FTP, SSH, MySQL, etc.
+
+Common hash locations:
+
+/etc/shadow
+
+.env, .bash_history, wp-config.php
+
+Backup or zip files
+
+✅ Summary
+You Have...	You Can Do...
+User hash	Crack it and use with su / sudo
+Reused passwords	Lateral move or escalate
+Shadow file	Merge with passwd → crack with john
+🔒 Use this method only in environments where you're allowed to test!
+
+
